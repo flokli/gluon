@@ -1,0 +1,18 @@
+language: c
+
+before_install:
+
+ # copy example site configuration
+ - cp -R docs/site-example site 
+
+ # set git identity (needed for make update)
+ - git config --global user.name travis
+ - git config --global user.email travis@example.invalid
+
+ # get other dependencies
+ - make update
+
+script:
+ # build gluon
+ # (without V=s, as we'd get past travis' 4MB log limit otherwise)
+ - make -j2
