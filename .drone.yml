@@ -1,0 +1,9 @@
+image: gcc
+
+script:
+ - cp -R docs/site-example site
+ - sudo apt-get install gawk
+ - git config --global user.name travis
+ - git config --global user.email travis@example.invalid
+ - make update
+ - make -j2 V=s
